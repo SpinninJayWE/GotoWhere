@@ -6,7 +6,7 @@
             <div class="search-content" ref="wrapper" v-show="cityname">
 
                 <ul>
-                    <li class="search-item border-bottom" v-for="(list,index) in list" :key="index">{{list.name}}</li>
+                    <li class="search-item border-bottom" v-for="(list,index) in list" :key="index" @click="handleCityClick(list.name)">{{list.name}} </li>
                     <li v-if="hasNodata" class="search-item tishi"><span class="iconfont">&#xe7fa;</span>&nbsp;未匹配到结果！</li>
                 </ul>
                 
@@ -58,6 +58,13 @@ export default {
                     this.list=result;
                 }, 100);
             
+        }
+    },
+    methods:{
+        handleCityClick(ct){
+            // console.log(ct)
+            this.$store.commit('changecityName',ct);
+            this.$router.push('/');
         }
     }
 }

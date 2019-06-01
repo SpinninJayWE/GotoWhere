@@ -7,7 +7,7 @@
                 </div>
                 <div class="button-list">
                     <div class="button-warpper">
-                        <div class="button">北京</div>
+                        <div class="button">{{$store.state.city}}</div>
                     </div>
                     
                 </div>
@@ -17,9 +17,9 @@
                     热门城市
                 </div>
                 <div class="button-list">
-                    <div class="button-warpper" v-for="Hotcitys in citylist.hotCities" :key="Hotcitys.id">
-                        <div class="button">{{Hotcitys.name}}</div>
-                    </div>
+                        <div class="button-warpper" v-for="Hotcitys in citylist.hotCities" :key="Hotcitys.id" @click="handleCityClick(Hotcitys.name)">
+                            <div class="button">{{Hotcitys.name}}</div>
+                        </div>
                     
                 </div>
             </div>
@@ -34,6 +34,7 @@
                 <div class="item-list" 
                 v-for="(citys) in item" 
                 :key="citys.id"
+                @click="handleCityClick(citys.name)"
                 >
                     <div class="item border-bottom">{{citys.name}}</div>
                 </div>
@@ -62,6 +63,13 @@ export default {
                 console.log(element)
             }
             
+        }
+    },
+    methods:{
+        handleCityClick(ct){
+            // console.log(ct)
+            this.$store.commit('changecityName',ct);
+            this.$router.push('/');
         }
     }
 }
