@@ -2,12 +2,14 @@
     <div id="HeaderContainer">
         <div class="Header-left">
             <span class="iconfont" style="font-size:18px;display:block;text-align:center;">&#xe624;</span>
-            </div>
+        </div>
         <div class="Header-input">
             <span class="iconfont" style="margin-left:6px;">&#xe632;</span>
             输入城市/景点
         </div>
-        <div class="Header-right">{{city}}&nbsp;<span class="iconfont arrow-icon">&#xe600;</span></div>
+        <router-link to="/city" tag="div">
+            <div class="Header-right">{{city}}&nbsp;<span class="iconfont arrow-icon">&#xe600;</span></div>
+        </router-link>
     </div>
 </template>
 
