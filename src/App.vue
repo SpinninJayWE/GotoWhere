@@ -22,7 +22,7 @@ export default {
                 .v-enter-active,
                 .v-leave-active{
                     /*transform: rotateX(120deg);*/
-                    transition: all 0.4s ease;
+                    transition: all 0.2s ease;
                     
                     
                 }
