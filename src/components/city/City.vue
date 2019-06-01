@@ -1,9 +1,9 @@
 <template>
     <div class="city">
         <cityHeader/>
-        <citySearch/>
-        <cityList :citylist='citylist'/> 
-        <cityAlphabet :citylist='citylist'/>
+        <citySearch :citylist='citylist'/>
+        <cityList :latter="latter" :citylist='citylist'/> 
+        <cityAlphabet :citylist='citylist' @change='handelltter'/>
     </div>
 </template>
 
@@ -17,7 +17,8 @@ export default {
     name:'city',
     data(){
         return {
-            citylist:[]
+            citylist:[],
+            latter:''
         }
     },
     components:{
@@ -36,10 +37,16 @@ export default {
                 }
             });
 
+        },
+        handelltter(latters){
+            this.latter=latters;
+            // console.log(this.latter);
         }
     },
     mounted(){
         this.getCityList();
+    },
+    watch:{
     }
 }
 </script>

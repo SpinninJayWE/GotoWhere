@@ -23,11 +23,18 @@
                     
                 </div>
             </div>
-            <div class="arae" v-for="(item,key) in citylist.cities" :key="key">
+            <div class="arae" 
+            v-for="(item,key) in citylist.cities" 
+            :key="key"
+            :ref="key"
+            >
                 <div class="title border-topbottom">
                     {{key}}
                 </div>
-                <div class="item-list" v-for="(citys) in item" :key="citys.id">
+                <div class="item-list" 
+                v-for="(citys) in item" 
+                :key="citys.id"
+                >
                     <div class="item border-bottom">{{citys.name}}</div>
                 </div>
             </div>
@@ -44,8 +51,19 @@ export default {
         this.scroll = new Bscroll(this.$refs.wrapper)
     },
     props:[
-        'citylist'
-    ]
+        'citylist',
+        'latter'
+    ],
+    watch:{
+        latter (){
+            if(this.latter){
+                const element = this.$refs[this.latter][0];
+                this.scroll.scrollToElement(element);
+                console.log(element)
+            }
+            
+        }
+    }
 }
 </script>
 

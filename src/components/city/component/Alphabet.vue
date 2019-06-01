@@ -1,6 +1,16 @@
 <template>
     <ul class="list">
-        <li class="item" v-for="(list,index) in citylist.cities" :key="index">{{index}}</li>
+        <li class="item" 
+        v-for="(list,index) in citylist.cities" 
+        :key="index"
+        :ref="index"
+        @click="handleletterClick"
+        @touchstart.prevent="handleTouchStart"
+        @touchmove="handleletterMove"
+        @touchend="handleletterEnd"
+
+        >
+        {{index}}</li>
     </ul>
 </template>
 
@@ -9,12 +19,53 @@ export default {
     name:'cityAlphabet',
     data(){
         return {
-            
+            touchsStatus:false,
+            startY: 0,
+            timer: null
         }
     },
     props:[
         'citylist'
-    ]
+    ],
+    updated(){
+        this.startY = this.$refs['A'][0].offsetTop
+    },
+    computed:{
+        letters(){
+            const leatters = []
+            for(let i in this.citylist.cities){
+                leatters.push(i);
+
+            }
+             return leatters;
+        }
+    },
+    methods:{
+        handleletterClick (e){
+            this.$emit('change',e.target.innerText);
+            // console.log(e.target.innerText);
+        },
+        handleTouchStart (){
+            this.touchsStatus=true;
+        },
+        handleletterMove (){
+            if (this.touchStatus) {
+                if (this.timer) {
+          clearTimeout(this.timer)
+        }
+            this.timer = setTimeout(() => {
+            const touchY = e.touches[0].clientY - 79
+            const index = Math.floor((touchY - this.startY) / 20)
+            if (index >= 0 && index < this.letters.length) {
+                    this.$emit('change', this.letters[index])
+            }
+            }, 16)
+      }
+        },
+        handleletterEnd (){
+            this.touchsStatus=false;
+        }
+    }
 }
 </script>
 
