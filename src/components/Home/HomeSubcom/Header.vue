@@ -7,7 +7,7 @@
             <span class="iconfont" style="margin-left:6px;">&#xe632;</span>
             输入城市/景点
         </div>
-        <div class="Header-right">城市&nbsp;<span class="iconfont arrow-icon">&#xe600;</span></div>
+        <div class="Header-right">{{city}}&nbsp;<span class="iconfont arrow-icon">&#xe600;</span></div>
     </div>
 </template>
 
@@ -18,7 +18,10 @@ export default {
         return {
 
         }
-    }
+    },
+    props:[
+        'city'
+    ]
 }
 </script>
 
