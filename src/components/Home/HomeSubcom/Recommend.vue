@@ -4,14 +4,14 @@
             热销推荐
         </div>
         <ul>
-            <li style="border-bottom:1px solid #eee;padding-bottom:3px;" class="RecomItem border-bottom" v-for="recoms in list" :key="recoms.id">
-                <img class="item-img" :src="recoms.imgUrl"/>
-                <div class="item-info">
-                    <p class="item-info-title">{{recoms.title}}</p>
-                    <p class="item-info-text">{{recoms.desc}}</p>
-                    <button class="item-button">查看详情</button>
-                </div>
-            </li>
+                <router-link :to="'/detail/'+recoms.id" tag="li" class="RecomItem border-bottom" v-for="recoms in list" :key="recoms.id">
+                    <img class="item-img" :src="recoms.imgUrl"/>
+                    <div class="item-info">
+                        <p class="item-info-title">{{recoms.title}}</p>
+                        <p class="item-info-text">{{recoms.desc}}</p>
+                        <button class="item-button">查看详情</button>
+                    </div>
+                </router-link>
         </ul>
 
     </div>
@@ -41,6 +41,8 @@ export default {
         overflow: hidden;
         display: flex;
         height: 94px;
+        border-bottom:1px solid #eee;
+        padding-bottom:3px;
     }
 
     .RecomItem .item-img{

@@ -7,5 +7,8 @@ export default{
     
         }
         
+    },
+    changeGallGayShow(state,val){
+        state.GallGayShow=val;
     }
 }

@@ -8,5 +8,6 @@ try{
 }
 
 export default{
-    city:defaultcity
+    city:defaultcity,
+    GallGayShow:false
 }
