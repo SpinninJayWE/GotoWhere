@@ -16,6 +16,7 @@
 
 <script>
 import Bscroll from 'better-scroll'
+import {mapMutations} from 'vuex'
 export default {
     name:'Citysearch',
     data(){
@@ -63,9 +64,11 @@ export default {
     methods:{
         handleCityClick(ct){
             // console.log(ct)
-            this.$store.commit('changecityName',ct);
+            // this.$store.commit('changecityName',ct);
+            this.changecityName(ct);
             this.$router.push('/');
-        }
+        },
+        ...mapMutations(['changecityName'])
     }
 }
 </script>
@@ -113,7 +116,7 @@ export default {
 }
 
 .tishi{
-    color: rgb(231, 108, 7);
+    color: rgb(4, 178, 212);
 }
 
 

@@ -8,12 +8,13 @@
             输入城市/景点
         </div>
         <router-link to="/city" tag="div">
-            <div class="Header-right">{{$store.state.city}}&nbsp;<span class="iconfont arrow-icon">&#xe600;</span></div>
+            <div class="Header-right">{{city}}&nbsp;<span class="iconfont arrow-icon">&#xe600;</span></div>
         </router-link>
     </div>
 </template>
 
 <script>
+import {mapState,mapGetters} from 'vuex'
 export default {
     name:'HomeHeader',
     data(){
@@ -23,6 +24,10 @@ export default {
     },
     mounted(){
         console.log(this.city)
+    },
+    computed:{
+        ...mapState(['city']),
+        ...mapGetters(['doubleCity'])
     }
 }
 </script>
@@ -70,9 +75,10 @@ export default {
 }
 
 #HeaderContainer .Header-right{
-    width: 62px;
+    width: auto;
     float: right;
     text-align: center;
+    padding: 0px 8px;
      
 }
 
