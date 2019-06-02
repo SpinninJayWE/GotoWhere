@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <transition mode="out-in">
-      <router-view/>
+      <keep-alive>
+        <router-view/>
+      </keep-alive>
     </transition>
   </div>
 </template>
