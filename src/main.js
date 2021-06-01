@@ -13,6 +13,8 @@ import './assets/styles/iconfont.css'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 
+//导入Vue 数据共享中心
+import store from './store'
 
 
 
@@ -27,5 +29,6 @@ new Vue({
   el: '#app',
   router,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  store
 })
